@@ -1,4 +1,5 @@
 // Utilitas sanitasi input untuk mencegah XSS
+import DOMPurify from "dompurify";
 
 const PETA_KARAKTER_BERBAHAYA: Record<string, string> = {
   "&": "&amp;",
@@ -20,8 +21,8 @@ export function escapeHtml(teks: string): string {
 // Hapus tag HTML dan karakter kontrol
 export function bersihkanTeks(teks: string): string {
   if (typeof teks !== "string") return "";
-  const tanpaTag = teks.replace(/<[^>]*>/g, "");
-  return tanpaTag.replace(/[\u0000-\u001F\u007F]/g, "").trim();
+  const bersih = DOMPurify.sanitize(teks, { ALLOWED_TAGS: [] });
+  return bersih.replace(/[\u0000-\u001F\u007F]/g, "").trim();
 }
 
 // Validasi panjang input

@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* Variabel tema Neo-Brutalism */
+:root {
+  --warna-latar: #fffdf5;
+  --warna-teks: #0a0a0a;
+  --warna-utama: #ff5f1f;
+  --warna-aksen: #00e5ff;
+  --warna-kuning: #ffd600;
+  --warna-ungu: #7c3aed;
+  --warna-hijau: #22c55e;
+  --warna-merah: #ef4444;
+  --border-tebal: 3px solid #0a0a0a;
+  --bayangan-keras: 6px 6px 0 #0a0a0a;
+  --bayangan-keras-kecil: 4px 4px 0 #0a0a0a;
+  --radius: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  background-color: var(--warna-latar);
+  color: var(--warna-teks);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Archivo Black", "Space Grotesk", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Utilitas Neo-Brutalism */
+.brutal-border {
+  border: var(--border-tebal);
+}
+
+.brutal-shadow {
+  box-shadow: var(--bayangan-keras);
+}
+
+.brutal-shadow-kecil {
+  box-shadow: var(--bayangan-keras-kecil);
+}
+
+.brutal-card {
+  background: #ffffff;
+  border: var(--border-tebal);
+  box-shadow: var(--bayangan-keras);
+}
+
+.brutal-btn {
+  border: var(--border-tebal);
+  box-shadow: var(--bayangan-keras-kecil);
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.brutal-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #0a0a0a;
+}
+
+.brutal-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #0a0a0a;
+}
+
+/* Fokus aksesibilitas */
+:focus-visible {
+  outline: 3px solid var(--warna-utama);
+  outline-offset: 2px;
+}
+
+/* Kurangi gerak untuk pengguna yang meminta */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Kanvas 3D */
+.kanvas-tiga-d {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.konten-utama {
+  position: relative;
+  z-index: 1;
+}

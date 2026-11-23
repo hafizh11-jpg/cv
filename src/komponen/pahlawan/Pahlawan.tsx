@@ -8,27 +8,23 @@ import { animasiStagger } from "../../animasi/animasiMasuk";
 import {
   animasiHurufJudul,
   timelineHero,
-  animasiParalaks,
-  animasiMelayang,
-  animasiPulsa,
-  animasiGeserDraggable,
-  animasiGlow,
+  animasiMelayangHalus,
+  animasiScrambleJudul,
 } from "../../animasi/animasiLanjutan";
 
 // Bagian hero / pahlawan
 const Pahlawan: Component = () => {
   let refJudul: HTMLHeadingElement | undefined;
+  let refGelar: HTMLHeadingElement | undefined;
   let refTeks: HTMLParagraphElement | undefined;
 
   onMount(() => {
     animasiHurufJudul(refJudul ?? null);
     timelineHero(refJudul ?? null, refTeks ?? null);
+    animasiScrambleJudul(refGelar ?? null, profil.gelar);
     animasiStagger(".hero-aksi > *", 150);
-    animasiMelayang(".hero-orb");
-    animasiPulsa(".hero-orb");
-    animasiGeserDraggable(".hero-orb");
-    animasiGlow(".hero-orb");
-    if (refJudul) animasiParalaks(refJudul);
+    const orb = document.querySelector<HTMLElement>(".hero-orb");
+    animasiMelayangHalus(orb);
   });
 
   return (
@@ -49,7 +45,7 @@ const Pahlawan: Component = () => {
           >
             {profil.nama}
           </h1>
-          <h2 class="mt-4 text-2xl font-bold md:text-3xl">{profil.gelar}</h2>
+          <h2 ref={refGelar} class="mt-4 text-2xl font-bold md:text-3xl">{profil.gelar}</h2>
           <p
             ref={refTeks}
             class="mt-6 max-w-xl text-lg opacity-0"

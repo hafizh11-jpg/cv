@@ -2,10 +2,12 @@ import { type Component, onMount } from "solid-js";
 import Kartu from "../umum/Kartu";
 import { profil } from "../../data/profil";
 import { animasiMasuk } from "../../animasi/animasiMasuk";
+import { animasiCounter, animasiGarisSvg } from "../../animasi/animasiLanjutan";
 
 // Bagian tentang saya
 const Tentang: Component = () => {
   let refBagian: HTMLDivElement | undefined;
+  let refCounter: HTMLSpanElement | undefined;
 
   onMount(() => {
     const observer = new IntersectionObserver(
@@ -17,12 +19,17 @@ const Tentang: Component = () => {
       { threshold: 0.2 },
     );
     if (refBagian) observer.observe(refBagian);
+    animasiCounter(refCounter ?? null, 3);
+    animasiGarisSvg(".garis-tentang line");
   });
 
   return (
     <section id="tentang" class="px-4 py-20">
       <div class="mx-auto max-w-6xl" ref={refBagian}>
         <h2 class="mb-8 text-4xl font-black uppercase">Tentang Saya</h2>
+        <svg class="garis-tentang mb-8 h-2 w-full" viewBox="0 0 100 2" preserveAspectRatio="none">
+          <line x1="0" y1="1" x2="100" y2="1" stroke="#0a0a0a" stroke-width="2" />
+        </svg>
         <div class="grid gap-6 md:grid-cols-2">
           <Kartu warna="#ffffff">
             <p class="text-lg leading-relaxed">{profil.ringkasan}</p>
@@ -32,6 +39,10 @@ const Tentang: Component = () => {
               <li>GitHub: {profil.github}</li>
               <li>Lokasi: {profil.lokasi}</li>
             </ul>
+            <p class="mt-6 text-4xl font-black">
+              <span ref={refCounter}>0</span>+
+            </p>
+            <p class="text-sm font-bold">Tahun pengalaman freelance</p>
           </Kartu>
           <Kartu warna="#ffd600">
             <h3 class="text-2xl font-black">Fokus Kerja</h3>

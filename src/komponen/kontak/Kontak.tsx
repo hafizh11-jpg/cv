@@ -51,6 +51,12 @@ const Kontak: Component = () => {
                   WhatsApp
                 </span>
               </Tombol>
+              <Tombol jenis="sekunder" href="https://www.instagram.com/hafizh_mh11?gwpx=YnM4ODNhZ3R4MDJs">
+                <span class="flex items-center gap-2">
+                  <IkonMerek nama="Instagram" ukuran={18} />
+                  Instagram
+                </span>
+              </Tombol>
               <Tombol jenis="sekunder" href={profil.tautanGithub}>
                 <span class="flex items-center gap-2">
                   <IkonMerek nama="GitHub" ukuran={18} />

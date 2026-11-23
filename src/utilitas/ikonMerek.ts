@@ -9,6 +9,7 @@ import {
   siGithub,
   siWhatsapp,
   siGmail,
+  siInstagram,
 } from "simple-icons";
 
 // Peta nama ke ikon merek (path SVG dan warna brand)
@@ -42,6 +43,11 @@ const peta: Record<string, IkonMerek> = {
     judul: siWhatsapp.title,
   },
   Email: { path: siGmail.path, hex: `#${siGmail.hex}`, judul: "Email" },
+  Instagram: {
+    path: siInstagram.path,
+    hex: `#${siInstagram.hex}`,
+    judul: siInstagram.title,
+  },
 };
 
 export function ambilIkon(nama: string): IkonMerek | undefined {

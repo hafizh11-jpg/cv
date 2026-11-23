@@ -5,6 +5,7 @@ import Tombol from "../umum/Tombol";
 import IkonMerek from "../umum/IkonMerek";
 import { profil } from "../../data/profil";
 import { animasiStagger } from "../../animasi/animasiMasuk";
+import { acakKartu } from "../../animasi/animasiLanjutan";
 import {
   animasiHurufJudul,
   timelineHero,
@@ -48,7 +49,7 @@ const Pahlawan: Component = () => {
           >
             {profil.ringkasan}
           </p>
-          <div class="hero-aksi mt-8 flex flex-wrap gap-4">
+          <div class="hero-aksi wadah-hero mt-8 flex flex-wrap gap-4">
             <Tombol href={`mailto:${profil.email}`}>
             <span class="flex items-center gap-2">
               <IkonMerek nama="Email" ukuran={18} />
@@ -62,6 +63,7 @@ const Pahlawan: Component = () => {
               </span>
             </Tombol>
           </div>
+          <button class="brutal-btn mt-4 bg-cyan-300 px-3 py-2 text-sm" onClick={() => acakKartu(".wadah-hero")}>Acak Tombol</button>
         </div>
       </div>
     </section>

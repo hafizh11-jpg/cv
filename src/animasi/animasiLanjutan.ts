@@ -125,23 +125,7 @@ export function animasiDraggable(selector: string): void {
     releaseEase: "outElastic(1, .5)",
     dragSpeed: 1,
     dragThreshold: 6,
-    onRelease: (self: any) => {
-      const el = self.target as HTMLElement;
-      const parent = el.parentElement;
-      if (!parent) return;
-      el.style.transform = "";
-      const layout = createLayout(parent, { duration: 500, ease: "outExpo" });
-      layout.record();
-      const children = Array.from(parent.children) as HTMLElement[];
-      children.sort((a, b) => {
-        const ra = a.getBoundingClientRect();
-        const rb = b.getBoundingClientRect();
-        if (Math.abs(ra.top - rb.top) > 10) return ra.top - rb.top;
-        return ra.left - rb.left;
-      });
-      children.forEach((c) => parent.appendChild(c));
-      layout.animate();
-    },
+
   });
 }
 

@@ -5,6 +5,7 @@ import FormulirKontak from "./FormulirKontak";
 import { profil } from "../../data/profil";
 import IkonMerek from "../umum/IkonMerek";
 import { animasiMasuk } from "../../animasi/animasiMasuk";
+import { acakKartu } from "../../animasi/animasiLanjutan";
 
 // Bagian kontak
 const Kontak: Component = () => {
@@ -35,7 +36,7 @@ const Kontak: Component = () => {
                 email atau WhatsApp.
               </p>
             </Kartu>
-            <div class="flex flex-wrap gap-3">
+            <div class="wadah-kontak flex flex-wrap gap-3">
               <Tombol href={`mailto:${profil.email}`}>
               <span class="flex items-center gap-2">
                 <IkonMerek nama="Email" ukuran={18} />
@@ -64,6 +65,7 @@ const Kontak: Component = () => {
                 </span>
               </Tombol>
             </div>
+            <button class="brutal-btn mt-2 bg-cyan-300 px-3 py-2 text-sm" onClick={() => acakKartu(".wadah-kontak")}>Acak Tombol</button>
           </div>
           <FormulirKontak />
         </div>

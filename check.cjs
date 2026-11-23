@@ -1,0 +1,21 @@
+const { chromium } = require('playwright');
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  await page.goto('http://127.0.0.1:4173');
+  await page.waitForTimeout(2000);
+  await page.evaluate(() => window.scrollTo(0, 900));
+  await page.waitForTimeout(500);
+  const card = page.locator('.brutal-card').first();
+  const box = await card.boundingBox();
+  console.log('before', box, 'scrollY', await page.evaluate(()=>window.scrollY));
+  await page.mouse.move(box.x+10, box.y+10);
+  await page.mouse.down();
+  await page.mouse.move(box.x+100, box.y+100, { steps: 10 });
+  await page.mouse.up();
+  await page.waitForTimeout(1000);
+  console.log('after scrollY', await page.evaluate(()=>window.scrollY));
+  const box2 = await card.boundingBox();
+  console.log('after', box2);
+  await browser.close();
+})();

@@ -20,7 +20,7 @@ const Keahlian: Component = () => {
   });
 
   return (
-    <section id="keahlian" class="bg-cyan-100 px-4 py-20">
+    <section id="keahlian" class="px-4 py-20">
       <div class="mx-auto max-w-6xl" ref={refBagian}>
         <h2 class="mb-8 text-4xl font-black uppercase">Keahlian</h2>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

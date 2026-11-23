@@ -30,7 +30,7 @@ const Layanan: Component = () => {
   });
 
   return (
-    <section id="layanan" class="bg-orange-100 px-4 py-20">
+    <section id="layanan" class="px-4 py-20">
       <div class="mx-auto max-w-6xl" ref={refBagian}>
         <h2 class="mb-8 text-4xl font-black uppercase">Layanan Jasa</h2>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

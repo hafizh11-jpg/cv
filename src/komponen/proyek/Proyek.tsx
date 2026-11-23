@@ -20,7 +20,7 @@ const Proyek: Component = () => {
   });
 
   return (
-    <section id="proyek" class="bg-purple-100 px-4 py-20">
+    <section id="proyek" class="px-4 py-20">
       <div class="mx-auto max-w-6xl" ref={refBagian}>
         <h2 class="mb-8 text-4xl font-black uppercase">Proyek</h2>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

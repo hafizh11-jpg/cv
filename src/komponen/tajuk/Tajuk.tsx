@@ -66,7 +66,7 @@ const Tajuk: Component = () => {
       </nav>
 
       {menuTerbuka() && (
-        <ul class="flex flex-col gap-2 border-t-4 border-black bg-white p-4 md:hidden">
+        <ul class="wadah-menu-mobile flex flex-col gap-2 border-t-4 border-black bg-white p-4 md:hidden">
           {TautanNav.map((t) => (
             <li>
               <a
@@ -81,7 +81,7 @@ const Tajuk: Component = () => {
           <li>
             <button
               class="brutal-btn w-full bg-cyan-300 px-3 py-2 text-xs"
-              onClick={() => acakKartu(".wadah-nav")}
+              onClick={() => acakKartu(".wadah-menu-mobile")}
             >
               Acak Menu
             </button>

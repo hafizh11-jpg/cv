@@ -28,7 +28,7 @@ const Pahlawan: Component = () => {
   return (
     <section
       id="beranda"
-      class="relative flex min-h-[90vh] items-center overflow-hidden px-4 py-20"
+      class="relative flex min-h-[90vh] items-center overflow-hidden px-4 py-28"
     >
       <LatarTigaD />
       <div class="konten-utama mx-auto max-w-6xl">

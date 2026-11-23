@@ -24,7 +24,7 @@ const Kontak: Component = () => {
   });
 
   return (
-    <section id="kontak" class="px-4 py-20">
+    <section id="kontak" class="px-4 py-28">
       <div class="mx-auto max-w-6xl" ref={refBagian}>
         <h2 class="mb-8 text-4xl font-black uppercase">Kontak</h2>
         <div class="grid gap-6 md:grid-cols-2">

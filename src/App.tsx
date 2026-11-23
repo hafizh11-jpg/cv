@@ -8,6 +8,7 @@ import Layanan from "./komponen/layanan/Layanan";
 import Kontak from "./komponen/kontak/Kontak";
 import Kaki from "./komponen/kaki/Kaki";
 import { cegahClickjacking } from "./keamanan/proteksi";
+import Lenis from "lenis";
 import { animasiPengikutKursor } from "./animasi/animasiLanjutan";
 
 // Komponen utama aplikasi
@@ -16,6 +17,9 @@ const App: Component = () => {
   onMount(() => {
     cegahClickjacking();
     animasiPengikutKursor(refPengikut ?? null);
+    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+    function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
   });
 
   return (

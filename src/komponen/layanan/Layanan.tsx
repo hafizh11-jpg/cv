@@ -33,7 +33,7 @@ const Layanan: Component = () => {
   });
 
   return (
-    <section id="layanan" class="px-4 py-20">
+    <section id="layanan" class="px-4 py-28">
       <div class="mx-auto max-w-6xl" ref={refBagian}>
         <h2 class="mb-8 text-4xl font-black uppercase">Layanan Jasa</h2>
         <button class="brutal-btn mb-6 bg-cyan-300 px-3 py-2 text-sm" onClick={() => acakKartu(".wadah-layanan")}>Acak Kartu</button>

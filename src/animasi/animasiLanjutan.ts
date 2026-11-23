@@ -118,14 +118,38 @@ export function animasiScrambleJudul(
 
 // Animasi draggable (bisa diseret dengan fisika)
 export function animasiDraggable(selector: string): void {
-  const elemen = document.querySelectorAll(selector);
+  const elemen = Array.from(document.querySelectorAll(selector));
   if (elemen.length === 0) return;
-  createDraggable(elemen, {
-    container: document.body,
-    releaseEase: "outElastic(1, .5)",
-    dragSpeed: 1,
-    dragThreshold: 6,
-
+  elemen.forEach((el) => {
+    createDraggable(el, {
+      container: document.body,
+      releaseEase: "outElastic(1, .5)",
+      dragSpeed: 1,
+      dragThreshold: 6,
+      onRelease: (self: any) => {
+        const x = self.x;
+        const y = self.y;
+        self.cancel();
+        const el = self.target as HTMLElement;
+        const diBawah = (typeof document.elementFromPoint === "function")
+          ? document.elementFromPoint(self.pointer[0], self.pointer[1]) as HTMLElement | null
+          : null;
+        const target = diBawah ? diBawah.closest(".brutal-card, .brutal-btn") as HTMLElement | null : null;
+        if (target && target !== el && target.parentElement === el.parentElement && el.parentElement) {
+          const parent = el.parentElement;
+          const layout = createLayout(parent, { duration: 400, ease: "outExpo" });
+          layout.record();
+          const next = target.nextSibling;
+          parent.insertBefore(target, el);
+          if (next) parent.insertBefore(el, next); else parent.appendChild(el);
+          el.style.transform = "";
+          target.style.transform = "";
+          layout.animate();
+        } else {
+          el.style.transform = "translate(" + x + "px, " + y + "px)";
+        }
+      },
+    });
   });
 }
 

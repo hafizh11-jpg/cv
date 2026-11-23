@@ -1,6 +1,6 @@
 import { type Component, createSignal, onMount } from "solid-js";
 import { animasiMasuk } from "../../animasi/animasiMasuk";
-import { animasiScrambleJudul } from "../../animasi/animasiLanjutan";
+import { animasiScrambleJudul, acakKartu } from "../../animasi/animasiLanjutan";
 
 const TautanNav = [
   { label: "Tentang", href: "#tentang" },
@@ -44,7 +44,7 @@ const Tajuk: Component = () => {
           {menuTerbuka() ? "Tutup" : "Menu"}
         </button>
 
-        <ul class="hidden items-center gap-2 md:flex">
+        <ul class="wadah-nav hidden items-center gap-2 md:flex">
           {TautanNav.map((t) => (
             <li>
               <a
@@ -56,6 +56,9 @@ const Tajuk: Component = () => {
             </li>
           ))}
         </ul>
+      <div class="hidden px-4 pb-2 md:block">
+        <button class="brutal-btn bg-cyan-300 px-3 py-2 text-xs" onClick={() => acakKartu(".wadah-nav")}>Acak Menu</button>
+      </div>
       </nav>
 
       {menuTerbuka() && (

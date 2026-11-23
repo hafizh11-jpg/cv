@@ -17,7 +17,7 @@ const App: Component = () => {
   onMount(() => {
     cegahClickjacking();
     animasiPengikutKursor(refPengikut ?? null);
-    animasiDraggable(".brutal-card, .brutal-btn");
+    animasiDraggable(".brutal-card, .brutal-btn, .wadah-nav a");
   });
 
   return (

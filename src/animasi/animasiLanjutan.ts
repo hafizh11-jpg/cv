@@ -126,13 +126,14 @@ export function animasiDraggable(selector: string): void {
       releaseEase: "outElastic(1, .5)",
       dragSpeed: 1,
       dragThreshold: 6,
-      onRelease: (self: any) => {
+    onRelease: (self: any) => {
         const x = self.x;
         const y = self.y;
         self.cancel();
         const el = self.target as HTMLElement;
+        const rect = (self.target as HTMLElement).getBoundingClientRect();
         const diBawah = (typeof document.elementFromPoint === "function")
-          ? document.elementFromPoint(self.pointer[0], self.pointer[1]) as HTMLElement | null
+          ? document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2) as HTMLElement | null
           : null;
         const target = diBawah ? diBawah.closest(".brutal-card, .brutal-btn") as HTMLElement | null : null;
         if (target && target !== el && target.parentElement === el.parentElement && el.parentElement) {

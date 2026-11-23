@@ -4,8 +4,6 @@ import Pahlawan from "./komponen/pahlawan/Pahlawan";
 import Tentang from "./komponen/tentang/Tentang";
 import Keahlian from "./komponen/keahlian/Keahlian";
 import Pengalaman from "./komponen/pengalaman/Pengalaman";
-import Proyek from "./komponen/proyek/Proyek";
-import Sertifikat from "./komponen/sertifikat/Sertifikat";
 import Layanan from "./komponen/layanan/Layanan";
 import Kontak from "./komponen/kontak/Kontak";
 import Kaki from "./komponen/kaki/Kaki";
@@ -25,8 +23,6 @@ const App: Component = () => {
         <Tentang />
         <Keahlian />
         <Pengalaman />
-        <Proyek />
-        <Sertifikat />
         <Layanan />
         <Kontak />
       </main>

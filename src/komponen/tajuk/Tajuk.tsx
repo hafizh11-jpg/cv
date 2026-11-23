@@ -5,8 +5,6 @@ const TautanNav = [
   { label: "Tentang", href: "#tentang" },
   { label: "Keahlian", href: "#keahlian" },
   { label: "Pengalaman", href: "#pengalaman" },
-  { label: "Proyek", href: "#proyek" },
-  { label: "Sertifikat", href: "#sertifikat" },
   { label: "Layanan", href: "#layanan" },
   { label: "Kontak", href: "#kontak" },
 ];

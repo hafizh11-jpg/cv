@@ -3,6 +3,7 @@ import Kartu from "../umum/Kartu";
 import Tombol from "../umum/Tombol";
 import FormulirKontak from "./FormulirKontak";
 import { profil } from "../../data/profil";
+import IkonMerek from "../umum/IkonMerek";
 import { animasiMasuk } from "../../animasi/animasiMasuk";
 
 // Bagian kontak
@@ -35,15 +36,26 @@ const Kontak: Component = () => {
               </p>
             </Kartu>
             <div class="flex flex-wrap gap-3">
-              <Tombol href={`mailto:${profil.email}`}>Email</Tombol>
+              <Tombol href={`mailto:${profil.email}`}>
+              <span class="flex items-center gap-2">
+                <IkonMerek nama="Email" ukuran={18} />
+                Email
+              </span>
+            </Tombol>
               <Tombol
                 jenis="sekunder"
                 href={`https://wa.me/62${profil.telepon.replace(/\D/g, "").replace(/^0/, "")}`}
               >
-                WhatsApp
+                <span class="flex items-center gap-2">
+                  <IkonMerek nama="WhatsApp" ukuran={18} />
+                  WhatsApp
+                </span>
               </Tombol>
               <Tombol jenis="sekunder" href={profil.tautanGithub}>
-                GitHub
+                <span class="flex items-center gap-2">
+                  <IkonMerek nama="GitHub" ukuran={18} />
+                  GitHub
+                </span>
               </Tombol>
             </div>
           </div>

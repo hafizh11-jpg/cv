@@ -10,9 +10,6 @@ const Kaki: Component = () => {
         <p class="text-sm font-bold">
           © {tahun} {profil.nama}. All rights reserved.
         </p>
-        <p class="text-xs text-gray-300">
-          Dibuat dengan SolidJS + TypeScript + Tailwind CSS
-        </p>
       </div>
     </footer>
   );

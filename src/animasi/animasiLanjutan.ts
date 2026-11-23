@@ -6,6 +6,13 @@ import {
   onScroll,
   createTimeline,
   createDrawable,
+  createDraggable,
+  createLayout,
+  createMotionPath,
+  createAnimatable,
+  svg,
+  waapi,
+  createScope,
 } from "animejs";
 
 // Animasi teks per huruf (sekali, hierarkis)
@@ -107,4 +114,104 @@ export function animasiScrambleJudul(
     ease: "outExpo",
     scrambleText: { text: teksAkhir, chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" },
   } as any);
+}
+
+// Animasi draggable (bisa diseret dengan fisika)
+export function animasiDraggable(selector: string): void {
+  const elemen = document.querySelectorAll(selector);
+  if (elemen.length === 0) return;
+  createDraggable(elemen, {
+    container: document.body,
+    releaseEase: "outElastic(1, .5)",
+    dragSpeed: 1,
+  });
+}
+
+// Animasi layout FLIP (untuk perubahan urutan DOM)
+export function animasiLayout(root: HTMLElement | null): any {
+  if (!root) return null;
+  return createLayout(root, {
+    duration: 600,
+    ease: "outExpo",
+  });
+}
+
+// Animasi gerak sepanjang path SVG
+export function animasiJalurGerak(
+  elemen: HTMLElement | null,
+  pathSelector: string,
+): void {
+  if (!elemen) return;
+  const path = document.querySelector<SVGPathElement>(pathSelector);
+  if (!path) return;
+  const motionPath = createMotionPath(path);
+  animate(elemen, {
+    ...motionPath,
+    duration: 3000,
+    loop: true,
+    ease: "inOutSine",
+  } as any);
+}
+
+// Animatable: elemen mengikuti kursor dengan spring
+export function animasiPengikutKursor(elemen: HTMLElement | null): void {
+  if (!elemen) return;
+  const animatable = createAnimatable(elemen, {
+    x: 300,
+    y: 300,
+    ease: "outExpo",
+  });
+  const gerak = (e: MouseEvent): void => {
+    animatable.x(e.clientX);
+    animatable.y(e.clientY);
+  };
+  window.addEventListener("mousemove", gerak);
+}
+
+// Animasi morph SVG (berubah bentuk)
+export function animasiMorphSvg(
+  elemen: SVGPathElement | null,
+  pathBaru: string,
+): void {
+  if (!elemen) return;
+  elemen.addEventListener("mouseenter", () => {
+    animate(elemen, {
+      d: svg.morphTo(pathBaru),
+      duration: 600,
+      ease: "outExpo",
+    } as any);
+  });
+  elemen.addEventListener("mouseleave", () => {
+    animate(elemen, {
+      d: svg.morphTo(elemen.getAttribute("data-asal") || ""),
+      duration: 600,
+      ease: "outExpo",
+    } as any);
+  });
+}
+
+// Animasi WAAPI (hardware-accelerated)
+export function animasiWaapi(elemen: HTMLElement | null): void {
+  if (!elemen) return;
+  waapi.animate(elemen, {
+    opacity: [0, 1],
+    transform: ["translateY(20px)", "translateY(0px)"],
+    duration: 800,
+    ease: "outExpo",
+  } as any);
+}
+
+// Animasi scope dengan media query (responsif)
+export function buatScopeAnimasi(
+  root: HTMLElement | null,
+  callback: (self: any) => void,
+): any {
+  if (!root) return null;
+  return createScope({
+    root,
+    mediaQueries: {
+      isDesktop: "(min-width: 768px)",
+      isMobile: "(max-width: 767px)",
+    },
+  }).add(callback);
 }

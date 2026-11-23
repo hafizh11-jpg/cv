@@ -5,6 +5,7 @@ import Tentang from "./komponen/tentang/Tentang";
 import Keahlian from "./komponen/keahlian/Keahlian";
 import Pengalaman from "./komponen/pengalaman/Pengalaman";
 import Layanan from "./komponen/layanan/Layanan";
+import Interaksi from "./komponen/interaksi/Interaksi";
 import Kontak from "./komponen/kontak/Kontak";
 import Kaki from "./komponen/kaki/Kaki";
 import { cegahClickjacking } from "./keamanan/proteksi";
@@ -24,6 +25,7 @@ const App: Component = () => {
         <Keahlian />
         <Pengalaman />
         <Layanan />
+        <Interaksi />
         <Kontak />
       </main>
       <Kaki />

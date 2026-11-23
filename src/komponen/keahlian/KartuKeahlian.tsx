@@ -1,6 +1,7 @@
 import { type Component } from "solid-js";
 import Lencana from "../umum/Lencana";
 import IkonMerek from "../umum/IkonMerek";
+import IkonJava from "../umum/IkonJava";
 
 interface PropsKartuKeahlian {
   nama: string;
@@ -13,7 +14,11 @@ const KartuKeahlian: Component<PropsKartuKeahlian> = (props) => {
     <div class="brutal-card p-4">
       <div class="mb-2 flex items-center justify-between">
         <span class="flex items-center gap-2 font-bold">
-          <IkonMerek nama={props.nama} ukuran={20} />
+          {props.nama === "Java" ? (
+            <IkonJava ukuran={20} />
+          ) : (
+            <IkonMerek nama={props.nama} ukuran={20} />
+          )}
           {props.nama}
         </span>
         <Lencana teks={`${props.tingkat}%`} warna="#00e5ff" />

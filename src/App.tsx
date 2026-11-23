@@ -8,7 +8,6 @@ import Layanan from "./komponen/layanan/Layanan";
 import Kontak from "./komponen/kontak/Kontak";
 import Kaki from "./komponen/kaki/Kaki";
 import { cegahClickjacking } from "./keamanan/proteksi";
-import { animasiDraggable } from "./animasi/animasiLanjutan";
 import { animasiPengikutKursor } from "./animasi/animasiLanjutan";
 
 // Komponen utama aplikasi
@@ -17,7 +16,6 @@ const App: Component = () => {
   onMount(() => {
     cegahClickjacking();
     animasiPengikutKursor(refPengikut ?? null);
-    animasiDraggable(".brutal-card, .brutal-btn, .wadah-nav a");
   });
 
   return (

@@ -2,6 +2,7 @@ import { type Component, onMount } from "solid-js";
 import { lazy } from "solid-js";
 const LatarTigaD = lazy(() => import("./LatarTigaD"));
 import Tombol from "../umum/Tombol";
+import IkonMerek from "../umum/IkonMerek";
 import { profil } from "../../data/profil";
 import { animasiMasuk, animasiStagger } from "../../animasi/animasiMasuk";
 
@@ -41,9 +42,17 @@ const Pahlawan: Component = () => {
             {profil.ringkasan}
           </p>
           <div class="hero-aksi mt-8 flex flex-wrap gap-4">
-            <Tombol href={`mailto:${profil.email}`}>Hubungi Saya</Tombol>
+            <Tombol href={`mailto:${profil.email}`}>
+            <span class="flex items-center gap-2">
+              <IkonMerek nama="Email" ukuran={18} />
+              Hubungi Saya
+            </span>
+          </Tombol>
             <Tombol jenis="sekunder" href={profil.tautanGithub}>
-              GitHub
+              <span class="flex items-center gap-2">
+                <IkonMerek nama="GitHub" ukuran={18} />
+                GitHub
+              </span>
             </Tombol>
           </div>
         </div>

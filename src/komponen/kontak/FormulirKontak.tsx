@@ -135,7 +135,7 @@ const FormulirKontak: Component = () => {
           type="text"
           value={nama()}
           onInput={(e) => setNama(e.currentTarget.value)}
-          class="w-full border-2 border-black p-2"
+          class="w-full border-2 border-black p-2 transition-transform duration-150 focus:-translate-y-0.5"
           maxLength={100}
           required
         />
@@ -153,7 +153,7 @@ const FormulirKontak: Component = () => {
           type="email"
           value={email()}
           onInput={(e) => setEmail(e.currentTarget.value)}
-          class="w-full border-2 border-black p-2"
+          class="w-full border-2 border-black p-2 transition-transform duration-150 focus:-translate-y-0.5"
           maxLength={100}
           required
         />
@@ -171,7 +171,7 @@ const FormulirKontak: Component = () => {
           type="tel"
           value={telepon()}
           onInput={(e) => setTelepon(e.currentTarget.value)}
-          class="w-full border-2 border-black p-2"
+          class="w-full border-2 border-black p-2 transition-transform duration-150 focus:-translate-y-0.5"
           maxLength={20}
         />
         {galat().telepon && (
@@ -187,7 +187,7 @@ const FormulirKontak: Component = () => {
           id="pesan"
           value={pesan()}
           onInput={(e) => setPesan(e.currentTarget.value)}
-          class="w-full border-2 border-black p-2"
+          class="w-full border-2 border-black p-2 transition-transform duration-150 focus:-translate-y-0.5"
           rows={5}
           maxLength={2000}
           required

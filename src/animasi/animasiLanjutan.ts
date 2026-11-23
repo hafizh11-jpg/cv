@@ -215,3 +215,37 @@ export function buatScopeAnimasi(
     },
   }).add(callback);
 }
+
+
+// Kemiringan kartu halus (subtle) mengikuti kursor
+export function animasiKemiringanHalus(selector: string): void {
+  const kartu = document.querySelectorAll<HTMLElement>(selector);
+  kartu.forEach((el) => {
+    el.addEventListener("mousemove", (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotX = ((y / rect.height) - 0.5) * -6;
+      const rotY = ((x / rect.width) - 0.5) * 6;
+      el.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    });
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg)";
+    });
+  });
+}
+
+export function animasiTimelinePengalaman(selector: string): void {
+  const items = document.querySelectorAll<HTMLElement>(selector);
+  if (items.length === 0) return;
+  items.forEach((el, i) => {
+    const dariKiri = i % 2 === 0;
+    animate(el, {
+      opacity: [0, 1],
+      translateX: [dariKiri ? -40 : 40, 0],
+      duration: 800,
+      delay: i * 120,
+      ease: "outCubic",
+    });
+  });
+}

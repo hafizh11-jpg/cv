@@ -1,18 +1,19 @@
 import { type Component, createSignal, onMount } from "solid-js";
 import { animasiMasuk } from "../../animasi/animasiMasuk";
+import { animasiScrambleJudul } from "../../animasi/animasiLanjutan";
 
 const TautanNav = [
   { label: "Tentang", href: "#tentang" },
   { label: "Keahlian", href: "#keahlian" },
   { label: "Pengalaman", href: "#pengalaman" },
   { label: "Layanan", href: "#layanan" },
-  { label: "Interaksi", href: "#interaksi" },
   { label: "Kontak", href: "#kontak" },
 ];
 
 // Header / navbar
 const Tajuk: Component = () => {
   const [menuTerbuka, setMenuTerbuka] = createSignal(false);
+  let refLogo: HTMLAnchorElement | undefined;
   let refNav: HTMLElement | undefined;
 
   onMount(() => {
@@ -26,8 +27,10 @@ const Tajuk: Component = () => {
     >
       <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <a
+          ref={refLogo}
           href="#beranda"
           class="text-xl font-black uppercase tracking-tight"
+          onMouseEnter={() => animasiScrambleJudul(refLogo ?? null, "HMH.")}
         >
           HMH.
         </a>
@@ -46,7 +49,7 @@ const Tajuk: Component = () => {
             <li>
               <a
                 href={t.href}
-                class="border-2 border-black bg-white px-3 py-1 text-sm font-bold uppercase hover:bg-orange-400"
+                class="border-2 border-black bg-white px-3 py-1 text-sm font-bold uppercase transition-transform duration-150 hover:-translate-y-0.5 hover:bg-orange-400"
               >
                 {t.label}
               </a>

@@ -3,6 +3,7 @@ import { Globe, Database, AppWindow, Monitor, Smartphone } from "lucide-solid";
 import Kartu from "../umum/Kartu";
 import { daftarLayanan } from "../../data/layanan";
 import { animasiStagger } from "../../animasi/animasiMasuk";
+import { animasiKemiringanHalus } from "../../animasi/animasiLanjutan";
 
 // Peta nama layanan ke ikon lucide
 const petaIkon: Record<string, Component<{ size?: number }>> = {
@@ -27,6 +28,7 @@ const Layanan: Component = () => {
       { threshold: 0.2 },
     );
     if (refBagian) observer.observe(refBagian);
+    animasiKemiringanHalus(".item-layanan .brutal-card");
   });
 
   return (

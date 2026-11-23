@@ -2,6 +2,7 @@ import { type Component, onMount } from "solid-js";
 import Kartu from "../umum/Kartu";
 import { daftarPengalaman } from "../../data/pengalaman";
 import { animasiStagger } from "../../animasi/animasiMasuk";
+import { animasiTimelinePengalaman } from "../../animasi/animasiLanjutan";
 
 // Bagian pengalaman
 const Pengalaman: Component = () => {
@@ -17,6 +18,7 @@ const Pengalaman: Component = () => {
       { threshold: 0.2 },
     );
     if (refBagian) observer.observe(refBagian);
+    animasiTimelinePengalaman(".item-pengalaman");
   });
 
   return (

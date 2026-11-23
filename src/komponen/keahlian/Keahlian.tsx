@@ -2,6 +2,7 @@ import { type Component, onMount } from "solid-js";
 import KartuKeahlian from "./KartuKeahlian";
 import { daftarKeahlian } from "../../data/keahlian";
 import { animasiStagger } from "../../animasi/animasiMasuk";
+import { animasiKemiringanHalus } from "../../animasi/animasiLanjutan";
 
 // Bagian keahlian
 const Keahlian: Component = () => {
@@ -17,6 +18,7 @@ const Keahlian: Component = () => {
       { threshold: 0.2 },
     );
     if (refBagian) observer.observe(refBagian);
+    animasiKemiringanHalus(".kartu-keahlian .brutal-card");
   });
 
   return (

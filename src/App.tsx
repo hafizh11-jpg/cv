@@ -5,19 +5,25 @@ import Tentang from "./komponen/tentang/Tentang";
 import Keahlian from "./komponen/keahlian/Keahlian";
 import Pengalaman from "./komponen/pengalaman/Pengalaman";
 import Layanan from "./komponen/layanan/Layanan";
-import Interaksi from "./komponen/interaksi/Interaksi";
 import Kontak from "./komponen/kontak/Kontak";
 import Kaki from "./komponen/kaki/Kaki";
 import { cegahClickjacking } from "./keamanan/proteksi";
+import { animasiPengikutKursor } from "./animasi/animasiLanjutan";
 
 // Komponen utama aplikasi
 const App: Component = () => {
+  let refPengikut: HTMLDivElement | undefined;
   onMount(() => {
     cegahClickjacking();
+    animasiPengikutKursor(refPengikut ?? null);
   });
 
   return (
     <div class="min-h-screen">
+      <div
+        ref={refPengikut}
+        class="pointer-events-none fixed left-0 top-0 z-[70] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-orange-400 mix-blend-difference"
+      />
       <Tajuk />
       <main>
         <Pahlawan />
@@ -25,7 +31,6 @@ const App: Component = () => {
         <Keahlian />
         <Pengalaman />
         <Layanan />
-        <Interaksi />
         <Kontak />
       </main>
       <Kaki />

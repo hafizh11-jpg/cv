@@ -5,6 +5,8 @@ import {
   splitText,
   onScroll,
   createTimeline,
+  createDraggable,
+  createDrawable,
 } from "animejs";
 
 // Animasi teks per huruf untuk judul hero
@@ -151,5 +153,92 @@ export function animasiCounter(
     onUpdate: () => {
       elemen.textContent = Math.round(obj.nilai).toString();
     },
+  });
+}
+
+// Animasi glow (bayangan berdenyut) berulang
+export function animasiGlow(selector: string): void {
+  const elemen = document.querySelectorAll<HTMLElement>(selector);
+  if (elemen.length === 0) return;
+  animate(elemen, {
+    boxShadow: [
+      "0 0 0px rgba(255,95,31,0.0)",
+      "0 0 24px rgba(255,95,31,0.6)",
+      "0 0 0px rgba(255,95,31,0.0)",
+    ],
+    duration: 2000,
+    loop: true,
+    ease: "inOutSine",
+  });
+}
+
+// Animasi flip kartu 3D pada hover
+export function animasiFlipKartu(selector: string): void {
+  const kartu = document.querySelectorAll<HTMLElement>(selector);
+  kartu.forEach((el) => {
+    el.style.transformStyle = "preserve-3d";
+    el.addEventListener("mouseenter", () => {
+      animate(el, {
+        rotateY: 180,
+        duration: 600,
+        ease: "outExpo",
+      });
+    });
+    el.addEventListener("mouseleave", () => {
+      animate(el, {
+        rotateY: 0,
+        duration: 600,
+        ease: "outExpo",
+      });
+    });
+  });
+}
+
+// Animasi draggable (bisa diseret)
+export function animasiGeserDraggable(selector: string): void {
+  const elemen = document.querySelectorAll(selector);
+  if (elemen.length === 0) return;
+  createDraggable(elemen, {
+    container: document.body,
+    releaseEase: "outElastic",
+  });
+}
+
+// Animasi scramble teks pada elemen
+export function animasiScrambleJudul(
+  elemen: HTMLElement | null,
+  teksAkhir: string,
+): void {
+  if (!elemen) return;
+  animate(elemen, {
+    textContent: teksAkhir,
+    duration: 1500,
+    ease: "outExpo",
+    scrambleText: { text: teksAkhir, chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" },
+  } as any);
+}
+
+// Animasi progress bar scroll di bagian atas
+export function animasiProgressScroll(idBar: string): void {
+  const bar = document.getElementById(idBar);
+  if (!bar) return;
+  const perbarui = (): void => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const progres = total > 0 ? (window.scrollY / total) * 100 : 0;
+    bar.style.width = `${progres}%`;
+  };
+  window.addEventListener("scroll", perbarui, { passive: true });
+  perbarui();
+}
+
+// Animasi draw garis SVG
+export function animasiGarisSvg(selector: string): void {
+  const garis = document.querySelectorAll<SVGGeometryElement>(selector);
+  if (garis.length === 0) return;
+  const drawable = createDrawable(garis);
+  animate(drawable, {
+    draw: "0 1",
+    duration: 1500,
+    ease: "outCubic",
   });
 }

@@ -11,6 +11,8 @@ import {
   animasiParalaks,
   animasiMelayang,
   animasiPulsa,
+  animasiGeserDraggable,
+  animasiGlow,
 } from "../../animasi/animasiLanjutan";
 
 // Bagian hero / pahlawan
@@ -24,6 +26,8 @@ const Pahlawan: Component = () => {
     animasiStagger(".hero-aksi > *", 150);
     animasiMelayang(".hero-orb");
     animasiPulsa(".hero-orb");
+    animasiGeserDraggable(".hero-orb");
+    animasiGlow(".hero-orb");
     if (refJudul) animasiParalaks(refJudul);
   });
 

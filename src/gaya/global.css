@@ -50,6 +50,11 @@ h3 {
   box-shadow: var(--bayangan-keras-kecil);
 }
 
+.brutal-card,
+.brutal-btn {
+  cursor: grab;
+}
+
 .brutal-card {
   background: #ffffff;
   border: var(--border-tebal);

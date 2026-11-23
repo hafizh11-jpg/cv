@@ -267,3 +267,17 @@ export function animasiTimelinePengalaman(selector: string): void {
     });
   });
 }
+
+// Acak urutan kartu dalam container dengan animasi Layout FLIP
+export function acakKartu(selectorContainer: string): void {
+  const container = document.querySelector<HTMLElement>(selectorContainer);
+  if (!container) return;
+  const layout = createLayout(container, { duration: 500, ease: "outExpo" });
+  layout.record();
+  const children = Array.from(container.children) as HTMLElement[];
+  for (let i = children.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    container.appendChild(children[j]);
+  }
+  layout.animate();
+}

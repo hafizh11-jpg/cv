@@ -3,6 +3,7 @@ import { Globe, Database, AppWindow, Monitor, Smartphone } from "lucide-solid";
 import Kartu from "../umum/Kartu";
 import { daftarLayanan } from "../../data/layanan";
 import { animasiStagger } from "../../animasi/animasiMasuk";
+import { acakKartu } from "../../animasi/animasiLanjutan";
 import { animasiKemiringanHalus } from "../../animasi/animasiLanjutan";
 
 // Peta nama layanan ke ikon lucide
@@ -35,7 +36,8 @@ const Layanan: Component = () => {
     <section id="layanan" class="px-4 py-20">
       <div class="mx-auto max-w-6xl" ref={refBagian}>
         <h2 class="mb-8 text-4xl font-black uppercase">Layanan Jasa</h2>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <button class="brutal-btn mb-6 bg-cyan-300 px-3 py-2 text-sm" onClick={() => acakKartu(".wadah-layanan")}>Acak Kartu</button>
+        <div class="wadah-layanan grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {daftarLayanan.map((l) => {
             const Ikon = petaIkon[l.nama];
             return (

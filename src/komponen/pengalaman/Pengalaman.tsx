@@ -2,6 +2,7 @@ import { type Component, onMount } from "solid-js";
 import Kartu from "../umum/Kartu";
 import { daftarPengalaman } from "../../data/pengalaman";
 import { animasiStagger } from "../../animasi/animasiMasuk";
+import { acakKartu } from "../../animasi/animasiLanjutan";
 import { animasiTimelinePengalaman } from "../../animasi/animasiLanjutan";
 
 // Bagian pengalaman
@@ -25,7 +26,8 @@ const Pengalaman: Component = () => {
     <section id="pengalaman" class="px-4 py-20">
       <div class="mx-auto max-w-6xl" ref={refBagian}>
         <h2 class="mb-8 text-4xl font-black uppercase">Pengalaman</h2>
-        <div class="space-y-6">
+        <button class="brutal-btn mb-6 bg-cyan-300 px-3 py-2 text-sm" onClick={() => acakKartu(".wadah-pengalaman")}>Acak Kartu</button>
+        <div class="wadah-pengalaman space-y-6">
           {daftarPengalaman.map((p) => (
             <div class="item-pengalaman opacity-0">
               <Kartu warna="#ffffff">

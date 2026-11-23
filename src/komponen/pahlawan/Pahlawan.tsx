@@ -8,7 +8,6 @@ import { animasiStagger } from "../../animasi/animasiMasuk";
 import {
   animasiHurufJudul,
   timelineHero,
-  animasiMelayangHalus,
   animasiScrambleJudul,
 } from "../../animasi/animasiLanjutan";
 
@@ -23,8 +22,6 @@ const Pahlawan: Component = () => {
     timelineHero(refJudul ?? null, refTeks ?? null);
     animasiScrambleJudul(refGelar ?? null, profil.gelar);
     animasiStagger(".hero-aksi > *", 150);
-    const orb = document.querySelector<HTMLElement>(".hero-orb");
-    animasiMelayangHalus(orb);
   });
 
   return (
@@ -33,7 +30,6 @@ const Pahlawan: Component = () => {
       class="relative flex min-h-[90vh] items-center overflow-hidden px-4 py-20"
     >
       <LatarTigaD />
-      <div class="hero-orb absolute right-10 top-20 h-24 w-24 border-4 border-black bg-pink-300" />
       <div class="konten-utama mx-auto max-w-6xl">
         <div class="max-w-3xl">
           <p class="mb-4 inline-block border-2 border-black bg-cyan-300 px-3 py-1 text-sm font-bold uppercase">

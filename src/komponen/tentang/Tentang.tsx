@@ -2,7 +2,7 @@ import { type Component, onMount } from "solid-js";
 import Kartu from "../umum/Kartu";
 import { profil } from "../../data/profil";
 import { animasiMasuk } from "../../animasi/animasiMasuk";
-import { animasiCounter, animasiGarisSvg } from "../../animasi/animasiLanjutan";
+import { animasiCounter, animasiGarisSvg, acakKartu } from "../../animasi/animasiLanjutan";
 
 // Bagian tentang saya
 const Tentang: Component = () => {
@@ -27,10 +27,11 @@ const Tentang: Component = () => {
     <section id="tentang" class="px-4 py-20">
       <div class="mx-auto max-w-6xl" ref={refBagian}>
         <h2 class="mb-8 text-4xl font-black uppercase">Tentang Saya</h2>
+        <button class="brutal-btn mb-6 bg-cyan-300 px-3 py-2 text-sm" onClick={() => acakKartu(".wadah-tentang")}>Acak Kartu</button>
         <svg class="garis-tentang mb-8 h-2 w-full" viewBox="0 0 100 2" preserveAspectRatio="none">
           <line x1="0" y1="1" x2="100" y2="1" stroke="#0a0a0a" stroke-width="2" />
         </svg>
-        <div class="grid gap-6 md:grid-cols-2">
+        <div class="wadah-tentang grid gap-6 md:grid-cols-2">
           <Kartu warna="#ffffff">
             <p class="text-lg leading-relaxed">{profil.ringkasan}</p>
             <ul class="mt-6 space-y-2 text-sm font-bold">

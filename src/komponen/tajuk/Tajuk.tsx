@@ -13,8 +13,8 @@ const TautanNav = [
 // Header / navbar
 const Tajuk: Component = () => {
   const [menuTerbuka, setMenuTerbuka] = createSignal(false);
-  let refLogo: HTMLAnchorElement | undefined;
   let refNav: HTMLElement | undefined;
+  let refLogo: HTMLAnchorElement | undefined;
 
   onMount(() => {
     animasiMasuk(refNav ?? null);
@@ -56,9 +56,13 @@ const Tajuk: Component = () => {
             </li>
           ))}
         </ul>
-      <div class="hidden px-4 pb-2 md:block">
-        <button class="brutal-btn bg-cyan-300 px-3 py-2 text-xs" onClick={() => acakKartu(".wadah-nav")}>Acak Menu</button>
-      </div>
+
+        <button
+          class="brutal-btn hidden bg-cyan-300 px-3 py-2 text-xs md:inline-block"
+          onClick={() => acakKartu(".wadah-nav")}
+        >
+          Acak Menu
+        </button>
       </nav>
 
       {menuTerbuka() && (
@@ -74,6 +78,14 @@ const Tajuk: Component = () => {
               </a>
             </li>
           ))}
+          <li>
+            <button
+              class="brutal-btn w-full bg-cyan-300 px-3 py-2 text-xs"
+              onClick={() => acakKartu(".wadah-nav")}
+            >
+              Acak Menu
+            </button>
+          </li>
         </ul>
       )}
     </header>

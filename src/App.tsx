@@ -8,11 +8,13 @@ import Layanan from "./komponen/layanan/Layanan";
 import Kontak from "./komponen/kontak/Kontak";
 import Kaki from "./komponen/kaki/Kaki";
 import { cegahClickjacking } from "./keamanan/proteksi";
+import { animasiMagnet } from "./animasi/animasiLanjutan";
 
 // Komponen utama aplikasi
 const App: Component = () => {
   onMount(() => {
     cegahClickjacking();
+    animasiMagnet(".brutal-btn");
   });
 
   return (

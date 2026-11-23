@@ -4,7 +4,14 @@ const LatarTigaD = lazy(() => import("./LatarTigaD"));
 import Tombol from "../umum/Tombol";
 import IkonMerek from "../umum/IkonMerek";
 import { profil } from "../../data/profil";
-import { animasiMasuk, animasiStagger } from "../../animasi/animasiMasuk";
+import { animasiStagger } from "../../animasi/animasiMasuk";
+import {
+  animasiHurufJudul,
+  timelineHero,
+  animasiParalaks,
+  animasiMelayang,
+  animasiPulsa,
+} from "../../animasi/animasiLanjutan";
 
 // Bagian hero / pahlawan
 const Pahlawan: Component = () => {
@@ -12,9 +19,12 @@ const Pahlawan: Component = () => {
   let refTeks: HTMLParagraphElement | undefined;
 
   onMount(() => {
-    animasiMasuk(refJudul ?? null, 100);
-    animasiMasuk(refTeks ?? null, 300);
+    animasiHurufJudul(refJudul ?? null);
+    timelineHero(refJudul ?? null, refTeks ?? null);
     animasiStagger(".hero-aksi > *", 150);
+    animasiMelayang(".hero-orb");
+    animasiPulsa(".hero-orb");
+    if (refJudul) animasiParalaks(refJudul);
   });
 
   return (
@@ -23,6 +33,7 @@ const Pahlawan: Component = () => {
       class="relative flex min-h-[90vh] items-center overflow-hidden px-4 py-20"
     >
       <LatarTigaD />
+      <div class="hero-orb absolute right-10 top-20 h-24 w-24 border-4 border-black bg-pink-300" />
       <div class="konten-utama mx-auto max-w-6xl">
         <div class="max-w-3xl">
           <p class="mb-4 inline-block border-2 border-black bg-cyan-300 px-3 py-1 text-sm font-bold uppercase">
